@@ -26,6 +26,6 @@ public:
 	FORCEINLINE void SetCapacidadCargaVolumen(float capacidad) { capacidadCargaVolumen = capacidad; }
 
 protected:
-	virtual void Mover();
+
 	virtual void Disparar();
 };

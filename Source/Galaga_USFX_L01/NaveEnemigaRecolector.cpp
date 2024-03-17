@@ -9,10 +9,6 @@ ANaveEnemigaRecolector::ANaveEnemigaRecolector()
 	mallaNaveEnemiga->SetStaticMesh(ShipMesh.Object);
 }
 
-void ANaveEnemigaRecolector::Mover()
-{
-}
-
 void ANaveEnemigaRecolector::Disparar()
 {
 }

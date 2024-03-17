@@ -24,6 +24,6 @@ public:
 	FORCEINLINE void SetTimepoInvisible(int _TiempoInvisible) { TiempoInvisible = _TiempoInvisible; }
 
 protected:
-	virtual void Mover();
+
 	virtual void Disparar();
 };

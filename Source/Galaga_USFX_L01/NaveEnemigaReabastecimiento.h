@@ -26,6 +26,5 @@ public:
 
 protected:
 
-	virtual void Mover();
 	virtual void Disparar();
 };

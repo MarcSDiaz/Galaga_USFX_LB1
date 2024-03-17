@@ -13,6 +13,7 @@ UCLASS()
 class GALAGA_USFX_L01_API ANaveEnemigaDestructor : public ANaveEnemiga
 {
 	GENERATED_BODY()
+
 private:
 
 	int TiempoAutodestruirse;
@@ -25,6 +26,5 @@ public:
 
 protected:
 
-	virtual void Mover();
 	virtual void Disparar();
 };

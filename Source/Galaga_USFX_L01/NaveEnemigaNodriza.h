@@ -30,6 +30,8 @@ public:
 	FORCEINLINE void SetCantidadMiniNaves(int _CantidadMiniNaves) { CantidadMiniNaves = _CantidadMiniNaves; }
 
 protected:
+	float LimiteDerecho;
+	float LimiteIzquierdo;
 	virtual void Mover(float DeltaTime);
 	virtual void Disparar();
 };

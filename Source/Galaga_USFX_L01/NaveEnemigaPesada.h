@@ -25,6 +25,6 @@ public:
 	FORCEINLINE void SetCantidadVidaExtra(int _CantidadVidaExtra) { CantidadVidaExtra = _CantidadVidaExtra; }
 
 protected:
-	virtual void Mover();
+
 	virtual void Disparar();
 };

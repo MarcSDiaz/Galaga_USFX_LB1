@@ -37,10 +37,12 @@ void EmptyLinkFunctionForGeneratedCodeGalaga_USFX_L01GameMode() {}
 	};
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AGalaga_USFX_L01GameMode_Statics::Class_MetaDataParams[] = {
+		{ "Comment", "//class ANaveEnemiga;\n//class ANaveEnemigaTransporte;\n//class ANaveEnemigaCaza;\n//class ANaveEnemigaPesada;\n//class ANaveEnemigaDestructor;\n//class ANaveEnemigaEspia;\n//class ANaveEnemigaRecolector;\n//class ANaveEnemigaReabastecimiento;\n//class ANaveEnemigaNodriza;\n" },
 		{ "HideCategories", "Info Rendering MovementReplication Replication Actor Input Movement Collision Rendering HLOD WorldPartition DataLayers Transformation" },
 		{ "IncludePath", "Galaga_USFX_L01GameMode.h" },
 		{ "ModuleRelativePath", "Galaga_USFX_L01GameMode.h" },
 		{ "ShowCategories", "Input|MouseInput Input|TouchInput" },
+		{ "ToolTip", "class ANaveEnemiga;\nclass ANaveEnemigaTransporte;\nclass ANaveEnemigaCaza;\nclass ANaveEnemigaPesada;\nclass ANaveEnemigaDestructor;\nclass ANaveEnemigaEspia;\nclass ANaveEnemigaRecolector;\nclass ANaveEnemigaReabastecimiento;\nclass ANaveEnemigaNodriza;" },
 	};
 #endif
 	const FCppClassTypeInfoStatic Z_Construct_UClass_AGalaga_USFX_L01GameMode_Statics::StaticCppClassTypeInfo = {
@@ -80,9 +82,9 @@ void EmptyLinkFunctionForGeneratedCodeGalaga_USFX_L01GameMode() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_marco_source_repos_NewRepo_Source_Galaga_USFX_L01_Galaga_USFX_L01GameMode_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AGalaga_USFX_L01GameMode, AGalaga_USFX_L01GameMode::StaticClass, TEXT("AGalaga_USFX_L01GameMode"), &Z_Registration_Info_UClass_AGalaga_USFX_L01GameMode, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AGalaga_USFX_L01GameMode), 2349588017U) },
+		{ Z_Construct_UClass_AGalaga_USFX_L01GameMode, AGalaga_USFX_L01GameMode::StaticClass, TEXT("AGalaga_USFX_L01GameMode"), &Z_Registration_Info_UClass_AGalaga_USFX_L01GameMode, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AGalaga_USFX_L01GameMode), 848389563U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_marco_source_repos_NewRepo_Source_Galaga_USFX_L01_Galaga_USFX_L01GameMode_h_744209833(TEXT("/Script/Galaga_USFX_L01"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_marco_source_repos_NewRepo_Source_Galaga_USFX_L01_Galaga_USFX_L01GameMode_h_1639549733(TEXT("/Script/Galaga_USFX_L01"),
 		Z_CompiledInDeferFile_FID_Users_marco_source_repos_NewRepo_Source_Galaga_USFX_L01_Galaga_USFX_L01GameMode_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_marco_source_repos_NewRepo_Source_Galaga_USFX_L01_Galaga_USFX_L01GameMode_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

@@ -10,10 +10,6 @@ ANaveEnemigaTransporte::ANaveEnemigaTransporte()
 
 }
 
-void ANaveEnemigaTransporte::Mover()
-{
-}
-
 void ANaveEnemigaTransporte::Disparar()
 {
 }

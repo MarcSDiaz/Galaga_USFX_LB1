@@ -9,10 +9,6 @@ ANaveEnemigaReabastecimiento::ANaveEnemigaReabastecimiento()
 	mallaNaveEnemiga->SetStaticMesh(ShipMesh.Object);
 }
 
-void ANaveEnemigaReabastecimiento::Mover()
-{
-}
-
 void ANaveEnemigaReabastecimiento::Disparar()
 {
 }
