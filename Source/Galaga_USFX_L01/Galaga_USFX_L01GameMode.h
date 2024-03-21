@@ -6,6 +6,7 @@
 #include "GameFramework/GameModeBase.h"
 #include "Galaga_USFX_L01GameMode.generated.h"
 
+class ANaveEnemiga;
 class ACazaG1;
 class ACazaG2;
 class ADestructorG1;
@@ -41,7 +42,8 @@ public:
 
 public:
 
-	ACazaG1* Caza01;
+	TArray<ANaveEnemiga*> TANavesEnemigas;
+	/*ACazaG1* Caza01;
 	ACazaG2* Caza02;
 	ADestructorG1* Des01;
 	ADestructorG2* Des02;
@@ -55,9 +57,9 @@ public:
 	ARecolectorG2* Recolector02;
 	ATransporteG1* Transporte01;
 	ATransporteG2* Transporte02;
-	ANaveEnemigaNodriza* Nodriza;
-	//ANaveEnemiga* NaveEnemiga01;
-	/*ANaveEnemigaTransporte* NaveEnemigaTransporte01;
+	ANaveEnemigaNodriza* Nodriza;*/
+	/*ANaveEnemiga* NaveEnemiga01;
+	ANaveEnemigaTransporte* NaveEnemigaTransporte01;
 	ANaveEnemigaTransporte* NaveEnemigaTransporte02;
 	ANaveEnemigaCaza* NaveEnemigaCaza01;
 	ANaveEnemigaCaza* NaveEnemigaCaza02;

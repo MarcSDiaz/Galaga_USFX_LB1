@@ -31,6 +31,7 @@ AGalaga_USFX_L01GameMode::AGalaga_USFX_L01GameMode()
 {
 	// set default pawn class to our character class
 	DefaultPawnClass = AGalaga_USFX_L01Pawn::StaticClass();
+	PrimaryActorTick.bCanEverTick = true;
 
 	//NaveEnemiga01 = nullptr;
 }
@@ -38,22 +39,26 @@ AGalaga_USFX_L01GameMode::AGalaga_USFX_L01GameMode()
 void AGalaga_USFX_L01GameMode::BeginPlay()
 {
 	Super::BeginPlay();
+
+	FVector LocNavesEspias = FVector(200.0f, -900.0f, 250.0f);
+	FVector LocNavesDestructores = FVector(0.0f, -900.0f, 250.0f);
+	FVector LocNavesCaza = FVector(100.0f, -750.0f, 250.0f);
 	//Set the game state to playing
-	FVector LocCaza01 = FVector(400.0f, -300.0f, 250.0f);//Ubicacion del Caza01
-	FVector LocCaza02 = FVector(400.0f, 300.0f, 250.0f);//Ubicacion del Caza02
-	FVector LocDes01 = FVector(400.0f, -150.0f, 250.0f);//Ubicacion del Des01
-	FVector LocDes02 = FVector(400.0f, 150.0f, 250.0f);//Ubicacion del Des02
-	FVector LocEspia01 = FVector(600.0f, 750.0f, 250.0f);//Ubicacion del Espia01
-	FVector LocEspia02 = FVector(600.0f, -750.0f, 250.0f);//Ubicacion del Espia02
-	FVector LocPesada01 = FVector(400.0f, 450.0f, 250.0f);//Ubicacion del Pesada01
-	FVector LocPesada02 = FVector(400.0f, -450.0f, 250.0f);//Ubicacion del Pesada02
-	FVector LocReabas01 = FVector(800.0f, 300.0f, 250.0f);//Ubicacion del Reabas01
-	FVector LocReabas02 = FVector(800.0f, -300.0f, 250.0f);//Ubicacion del Reabas02
-	FVector LocRecolector01 = FVector(600.0f, 900.0f, 250.0f);//Ubicacion del Recolector01
-	FVector LocRecolector02 = FVector(600.0f, -900.0f, 250.0f);//Ubicacion del Recolector02
-	FVector LocTransporte01 = FVector(600.0f, 600.0f, 250.0f);//Ubicacion del Transporte01
-	FVector LocTransporte02 = FVector(600.0f, -600.0f, 250.0f);//Ubicacion del Transporte02
-	FVector LocNodriza = FVector(700.0f, 0.0f, 250.0f);//Ubicacion de la nave Nodriza;
+	//FVector LocCaza01 = FVector(400.0f, -300.0f, 250.0f);//Ubicacion del Caza01
+	//FVector LocCaza02 = FVector(400.0f, 300.0f, 250.0f);//Ubicacion del Caza02
+	//FVector LocDes01 = FVector(400.0f, -150.0f, 250.0f);//Ubicacion del Des01
+	//FVector LocDes02 = FVector(400.0f, 150.0f, 250.0f);//Ubicacion del Des02
+	//FVector LocEspia01 = FVector(600.0f, 750.0f, 250.0f);//Ubicacion del Espia01
+	//FVector LocEspia02 = FVector(600.0f, -750.0f, 250.0f);//Ubicacion del Espia02
+	//FVector LocPesada01 = FVector(400.0f, 450.0f, 250.0f);//Ubicacion del Pesada01
+	//FVector LocPesada02 = FVector(400.0f, -450.0f, 250.0f);//Ubicacion del Pesada02
+	//FVector LocReabas01 = FVector(800.0f, 300.0f, 250.0f);//Ubicacion del Reabas01
+	//FVector LocReabas02 = FVector(800.0f, -300.0f, 250.0f);//Ubicacion del Reabas02
+	//FVector LocRecolector01 = FVector(600.0f, 900.0f, 250.0f);//Ubicacion del Recolector01
+	//FVector LocRecolector02 = FVector(600.0f, -900.0f, 250.0f);//Ubicacion del Recolector02
+	//FVector LocTransporte01 = FVector(600.0f, 600.0f, 250.0f);//Ubicacion del Transporte01
+	//FVector LocTransporte02 = FVector(600.0f, -600.0f, 250.0f);//Ubicacion del Transporte02
+	//FVector LocNodriza = FVector(700.0f, 0.0f, 250.0f);//Ubicacion de la nave Nodriza;
 	//FVector ubicacionNave01 = FVector(600.0f, 600.0f, 250.0f);//Transporte01
 	//FVector ubicacionNave02 = FVector(400.0f, -300.0f, 250.0f);//Caza01
 	//FVector ubicacionNave03 = FVector(400.0f, 300.0f, 250.0f);//Caza02
@@ -70,14 +75,64 @@ void AGalaga_USFX_L01GameMode::BeginPlay()
 	//FVector ubicacionNave14 = FVector(800.0f, -300.0f, 250.0f);//Reabas02
 	//FVector ubicacionNave15 = FVector(700.0f, 0.0f, 250.0f);//Nodriza
 
-
-	FRotator rotacionNave = FRotator(0.0f, 0.0f, 0.0f);
+	FRotator RotacionNave = FRotator(0.0f, 0.0f, 0.0f);
 
 	UWorld* const World = GetWorld();
 	if (World != nullptr)
 	{
 		// spawn the projectile
-		Caza01 = World->SpawnActor<ACazaG1>(LocCaza01, rotacionNave);
+		for (int i = 0; i < FMath::RandRange(1, 4); i++){
+
+			FVector PosicionActual = FVector(LocNavesEspias.X, LocNavesEspias.Y, LocNavesEspias.Z);
+			AEspiaG1* EspiasG1Temporal = World->SpawnActor<AEspiaG1>(LocNavesEspias, RotacionNave);
+			LocNavesEspias.Y = LocNavesEspias.Y + 600.0f;
+
+			TANavesEnemigas.Push(EspiasG1Temporal);
+		}
+		LocNavesEspias.Y = 600.0f;
+		for (int i = 0; i < FMath::RandRange(1, 3); i++) {
+
+			FVector PosicionActual = FVector(LocNavesEspias.X, LocNavesEspias.Y, LocNavesEspias.Z);
+			AEspiaG2* EspiaG2Temporal = World->SpawnActor<AEspiaG2>(LocNavesEspias, RotacionNave);
+			LocNavesEspias.Y = LocNavesEspias.Y - 600.0f;
+
+			TANavesEnemigas.Push(EspiaG2Temporal);
+		}
+		for (int i = 0; i < FMath::RandRange(1, 4); i++) {
+
+			FVector PosicionActual = FVector(LocNavesDestructores.X, LocNavesDestructores.Y, LocNavesDestructores.Z);
+			ADestructorG1* DestructoresG1Temporal = World->SpawnActor<ADestructorG1>(LocNavesDestructores, RotacionNave);
+			LocNavesDestructores.Y = LocNavesDestructores.Y + 600.0f;
+
+			TANavesEnemigas.Push(DestructoresG1Temporal);
+		}
+		LocNavesDestructores.Y = 600.0f;
+		for (int i = 0; i < FMath::RandRange(1, 3); i++) {
+
+			FVector PosicionActual = FVector(LocNavesDestructores.X, LocNavesDestructores.Y, LocNavesDestructores.Z);
+			ADestructorG2* DestructoresG2Temporal = World->SpawnActor<ADestructorG2>(LocNavesDestructores, RotacionNave);
+			LocNavesDestructores.Y = LocNavesDestructores.Y - 600.0f;
+
+			TANavesEnemigas.Push(DestructoresG2Temporal);
+		}
+		for(int i = 0; i < FMath::RandRange(1, 3); i++){
+
+			FVector PosicionActual = FVector(LocNavesCaza.X, LocNavesCaza.Y, LocNavesCaza.Z);
+			ACazaG1* CazasG1Temporal = World->SpawnActor<ACazaG1>(LocNavesCaza, RotacionNave);
+			LocNavesCaza.Y = LocNavesCaza.Y + 600.0f;
+
+			TANavesEnemigas.Push(CazasG1Temporal);
+		}
+		LocNavesCaza.Y = 750.0f;
+		for (int i = 0; i < FMath::RandRange(1, 3); i++) {
+
+			FVector PosicionActual = FVector(LocNavesCaza.X, LocNavesCaza.Y, LocNavesCaza.Z);
+			ACazaG2* CazasG2Temporal = World->SpawnActor<ACazaG2>(LocNavesCaza, RotacionNave);
+			LocNavesCaza.Y = LocNavesCaza.Y - 600.0f;
+
+			TANavesEnemigas.Push(CazasG2Temporal);
+		}
+		/*Caza01 = World->SpawnActor<ACazaG1>(LocCaza01, rotacionNave);
 		Caza02 = World->SpawnActor<ACazaG2>(LocCaza02, rotacionNave);
 		Des01 = World->SpawnActor<ADestructorG1>(LocDes01, rotacionNave);
 		Des02 = World->SpawnActor<ADestructorG2>(LocDes02, rotacionNave);
@@ -91,7 +146,7 @@ void AGalaga_USFX_L01GameMode::BeginPlay()
 		Recolector02 = World->SpawnActor<ARecolectorG2>(LocRecolector02, rotacionNave);
 		Transporte01 = World->SpawnActor<ATransporteG1>(LocTransporte01, rotacionNave);
 		Transporte02 = World->SpawnActor<ATransporteG2>(LocTransporte02, rotacionNave);
-		Nodriza = World->SpawnActor<ANaveEnemigaNodriza>(LocNodriza, rotacionNave);		
+		Nodriza = World->SpawnActor<ANaveEnemigaNodriza>(LocNodriza, rotacionNave);	*/	
 		/*NaveEnemigaTransporte01 = World->SpawnActor<ANaveEnemigaTransporte>(ubicacionNave01, rotacionNave);
 		NaveEnemigaTransporte02 = World->SpawnActor<ANaveEnemigaTransporte>(ubicacionNave04, rotacionNave);
 		NaveEnemigaCaza01 = World->SpawnActor<ANaveEnemigaCaza>(ubicacionNave02, rotacionNave);
@@ -109,7 +164,8 @@ void AGalaga_USFX_L01GameMode::BeginPlay()
 		NaveEnemigaNodrizaUnica = World->SpawnActor<ANaveEnemigaNodriza>(ubicacionNave15, rotacionNave);*/
 	}
 
-	Caza01->SetPosicion(FVector(400.0f, -300.0f, 250.0f));
+
+	/*Caza01->SetPosicion(FVector(400.0f, -300.0f, 250.0f));
 	Caza02->SetPosicion(FVector(400.0f, 300.0f, 250.0f));
 	Des01->SetPosicion(FVector(400.0f, 150.0f, 250.0f));
 	Des02->SetPosicion(FVector(400.0f, 150.0f, 250.0f));
@@ -123,7 +179,7 @@ void AGalaga_USFX_L01GameMode::BeginPlay()
 	Recolector02->SetPosicion(FVector(600.0f, -900.0f, 250.0f));
 	Transporte01->SetPosicion(FVector(600.0f, 600.0f, 250.0f));
 	Transporte02->SetPosicion(FVector(600.0f, -600.0f, 250.0f));
-	Nodriza->SetPosicion(FVector(700.0f, 0.0f, 250.0f));
+	Nodriza->SetPosicion(FVector(700.0f, 0.0f, 250.0f));*/
 
 	/*NaveEnemigaCaza01->SetPosicion(FVector(400.0f, -300.0f, 250.0f));
 	NaveEnemigaCaza02->SetPosicion(FVector(400.0f, 300.0f, 250.0f));

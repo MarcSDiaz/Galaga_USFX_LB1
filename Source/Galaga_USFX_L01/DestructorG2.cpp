@@ -22,7 +22,7 @@ void ADestructorG2::BeginPlay()
 void ADestructorG2::Mover(float DeltaTime)
 {
 	FVector PosicionActual = GetActorLocation();
-	float Velocidad = -35.0f;
+	float Velocidad = -1000.0f;
 	FVector NuevaPosicion = PosicionActual + FVector(Velocidad * DeltaTime, 0.0f, 0.0f);
 	SetActorLocation(NuevaPosicion);
 }
