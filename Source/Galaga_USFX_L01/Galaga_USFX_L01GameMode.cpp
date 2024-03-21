@@ -39,10 +39,15 @@ AGalaga_USFX_L01GameMode::AGalaga_USFX_L01GameMode()
 void AGalaga_USFX_L01GameMode::BeginPlay()
 {
 	Super::BeginPlay();
-
-	FVector LocNavesEspias = FVector(200.0f, -900.0f, 250.0f);
+	
 	FVector LocNavesDestructores = FVector(0.0f, -900.0f, 250.0f);
 	FVector LocNavesCaza = FVector(100.0f, -750.0f, 250.0f);
+	FVector LocNavesEspias = FVector(200.0f, -900.0f, 250.0f);
+	FVector LocNavesRecolectoras = FVector(300.0f, -600.0f, 250.0f);
+	FVector LocNavesReabastecimiento = FVector(500.0f, -600.0f, 250.0f);
+	FVector LocNavesPesadas = FVector(400.0f, -400.0f, 250.0f);
+	FVector LocNavesTransporte = FVector(250.0f, -750.0f, 250.0f);
+	FVector LocNavesNodriza = FVector(500.0f, 0.0f, 205.0f);
 	//Set the game state to playing
 	//FVector LocCaza01 = FVector(400.0f, -300.0f, 250.0f);//Ubicacion del Caza01
 	//FVector LocCaza02 = FVector(400.0f, 300.0f, 250.0f);//Ubicacion del Caza02
@@ -81,6 +86,92 @@ void AGalaga_USFX_L01GameMode::BeginPlay()
 	if (World != nullptr)
 	{
 		// spawn the projectile
+		for (int i = 0; i < 3; i++) {
+
+			FVector PosicionActual = FVector(LocNavesNodriza.X, LocNavesNodriza.Y, LocNavesNodriza.Z);
+			ANaveEnemigaNodriza* NodrizaTemporal = World->SpawnActor<ANaveEnemigaNodriza>(LocNavesNodriza, RotacionNave);
+			LocNavesNodriza.X = LocNavesNodriza.X + 150.0f;
+
+			TANavesEnemigas.Push(NodrizaTemporal);
+		}
+		for (int i = 0; i < 8; i++) {
+
+			if (i < 4) {
+				FVector PosicionActual = FVector(LocNavesTransporte.X, LocNavesTransporte.X, LocNavesTransporte.Z);
+				ATransporteG1* TransporteG1Temporal = World->SpawnActor<ATransporteG1>(LocNavesTransporte, RotacionNave);
+				LocNavesTransporte.X = LocNavesTransporte.X + 100.0f;
+
+				TANavesEnemigas.Push(TransporteG1Temporal);
+			}
+			else {
+				if (i == 4) {
+					LocNavesTransporte.X = 250.0f;
+				}
+				LocNavesTransporte.Y = 750.0f;
+				FVector PosicionActual = FVector(LocNavesTransporte.X, LocNavesTransporte.Y, LocNavesTransporte.Z);
+				ATransporteG2* TransporteG2Temporal = World->SpawnActor<ATransporteG2>(LocNavesTransporte, RotacionNave);
+				LocNavesTransporte.X = LocNavesTransporte.X + 100.0f;
+
+				TANavesEnemigas.Push(TransporteG2Temporal);
+			}
+		}
+		for (int i = 0; i < 4; i++){
+			
+			if (i < 2) {
+				FVector PosicionActual = FVector(LocNavesPesadas.X, LocNavesPesadas.Y, LocNavesPesadas.Z);
+				APesadaG1* PesadaG1Temporal = World->SpawnActor<APesadaG1>(LocNavesPesadas, RotacionNave);
+				LocNavesPesadas.Y = LocNavesPesadas.Y + 800.0f;
+
+				TANavesEnemigas.Push(PesadaG1Temporal);
+			}
+			else {
+				LocNavesPesadas.X = 550.0f;
+				if (i == 2) {
+					LocNavesPesadas.Y = 400.0f;
+				}
+				FVector PoscionActual = FVector(LocNavesPesadas.X, LocNavesPesadas.Y, LocNavesPesadas.Z);
+				APesadaG2* PesadaG2Temporal = World->SpawnActor<APesadaG2>(LocNavesPesadas, RotacionNave);
+				LocNavesPesadas.Y = LocNavesPesadas.Y - 800.0f;
+
+				TANavesEnemigas.Push(PesadaG2Temporal);
+			}
+		}
+		for (int i = 0; i < 2; i++) {
+
+			FVector PosicionActual = FVector(LocNavesReabastecimiento.X, LocNavesReabastecimiento.Y, LocNavesReabastecimiento.Z);
+			AReabastecimientoG1* ReabastecimientoG1Temporal = World->SpawnActor<AReabastecimientoG1>(LocNavesReabastecimiento, RotacionNave);
+			LocNavesReabastecimiento.Y = LocNavesReabastecimiento.Y + 1200.0f;
+
+			TANavesEnemigas.Push(ReabastecimientoG1Temporal);
+		}
+		LocNavesReabastecimiento.X = 700.0f;
+		LocNavesReabastecimiento.Y = 600.0f;
+		for (int i = 0; i < 2; i++) {
+
+			FVector PoscionActual = FVector(LocNavesReabastecimiento.X, LocNavesReabastecimiento.Y, LocNavesReabastecimiento.Z);
+			AReabastecimientoG2* ReabastecimientoG2Temporal = World->SpawnActor<AReabastecimientoG2>(LocNavesReabastecimiento, RotacionNave);
+			LocNavesReabastecimiento.Y = LocNavesReabastecimiento.Y - 1200.0f;
+
+			TANavesEnemigas.Push(ReabastecimientoG2Temporal);
+		}
+		for (int i = 0; i < 2; i++){
+
+			FVector PosicionActual = FVector(LocNavesRecolectoras.X, LocNavesRecolectoras.Y, LocNavesRecolectoras.Z);
+			ARecolectorG1* RecolectorG1Temporal = World->SpawnActor<ARecolectorG1>(LocNavesRecolectoras,RotacionNave);
+			LocNavesRecolectoras.Y = LocNavesRecolectoras.Y + 1200.0f;
+
+			TANavesEnemigas.Push(RecolectorG1Temporal);
+		}
+		LocNavesRecolectoras.X = 900.0f;
+		LocNavesRecolectoras.Y = 600.0f;
+		for (int i = 0; i < 2; i++) {
+
+			FVector PoscionActual = FVector(LocNavesRecolectoras.X, LocNavesRecolectoras.Y, LocNavesRecolectoras.Z);
+			ARecolectorG2* RecolectorG2Temporal = World->SpawnActor<ARecolectorG2>(LocNavesRecolectoras, RotacionNave);
+			LocNavesRecolectoras.Y = LocNavesRecolectoras.Y - 1200.0f;
+
+			TANavesEnemigas.Push(RecolectorG2Temporal);
+		}
 		for (int i = 0; i < FMath::RandRange(1, 4); i++){
 
 			FVector PosicionActual = FVector(LocNavesEspias.X, LocNavesEspias.Y, LocNavesEspias.Z);
