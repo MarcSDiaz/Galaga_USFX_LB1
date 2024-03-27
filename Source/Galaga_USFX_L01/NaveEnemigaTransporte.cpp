@@ -13,3 +13,8 @@ ANaveEnemigaTransporte::ANaveEnemigaTransporte()
 void ANaveEnemigaTransporte::Disparar()
 {
 }
+
+void ANaveEnemigaTransporte::Mover(float DeltaTime)
+{
+}
+

@@ -1,5 +1,5 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
-
+//EL 16 DE ABRIL ES EL EXAMEN, Y UN DIA VIERNE O SABADO SALDRA LA PREGUNTA, CUALQUIER DIA, ELABORAR EL CODIGO Y SABER BIEN COMO HICE
 #include "Galaga_USFX_L01GameMode.h"
 #include "Galaga_USFX_L01Pawn.h"
 #include "CazaG1.h"
@@ -40,8 +40,8 @@ void AGalaga_USFX_L01GameMode::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	FVector LocNavesDestructores = FVector(0.0f, -900.0f, 250.0f);
-	FVector LocNavesCaza = FVector(100.0f, -750.0f, 250.0f);
+	FVector LocNavesDestructores = FVector(200.0f, -525.0f, 250.0f);
+	FVector LocNavesCaza = FVector(200.0f, -750.0f, 250.0f);
 	FVector LocNavesEspias = FVector(200.0f, -900.0f, 250.0f);
 	FVector LocNavesRecolectoras = FVector(300.0f, -600.0f, 250.0f);
 	FVector LocNavesReabastecimiento = FVector(500.0f, -600.0f, 250.0f);
@@ -86,7 +86,7 @@ void AGalaga_USFX_L01GameMode::BeginPlay()
 	if (World != nullptr)
 	{
 		// spawn the projectile
-		for (int i = 0; i < 3; i++) {
+		/*for (int i = 0; i < 3; i++) {
 
 			FVector PosicionActual = FVector(LocNavesNodriza.X, LocNavesNodriza.Y, LocNavesNodriza.Z);
 			ANaveEnemigaNodriza* NodrizaTemporal = World->SpawnActor<ANaveEnemigaNodriza>(LocNavesNodriza, RotacionNave);
@@ -188,25 +188,25 @@ void AGalaga_USFX_L01GameMode::BeginPlay()
 			LocNavesEspias.Y = LocNavesEspias.Y - 600.0f;
 
 			TANavesEnemigas.Push(EspiaG2Temporal);
-		}
-		for (int i = 0; i < FMath::RandRange(1, 4); i++) {
+		}*/
+		for (int i = 0; i < 3; i++) {
 
 			FVector PosicionActual = FVector(LocNavesDestructores.X, LocNavesDestructores.Y, LocNavesDestructores.Z);
 			ADestructorG1* DestructoresG1Temporal = World->SpawnActor<ADestructorG1>(LocNavesDestructores, RotacionNave);
-			LocNavesDestructores.Y = LocNavesDestructores.Y + 600.0f;
+			LocNavesDestructores.Y = LocNavesDestructores.Y + 525.0f;
 
 			TANavesEnemigas.Push(DestructoresG1Temporal);
 		}
-		LocNavesDestructores.Y = 600.0f;
-		for (int i = 0; i < FMath::RandRange(1, 3); i++) {
+		LocNavesDestructores.Y = -225.0f;
+		for (int i = 0; i < 2; i++) {
 
 			FVector PosicionActual = FVector(LocNavesDestructores.X, LocNavesDestructores.Y, LocNavesDestructores.Z);
 			ADestructorG2* DestructoresG2Temporal = World->SpawnActor<ADestructorG2>(LocNavesDestructores, RotacionNave);
-			LocNavesDestructores.Y = LocNavesDestructores.Y - 600.0f;
+			LocNavesDestructores.Y = LocNavesDestructores.Y + 450.0f;
 
 			TANavesEnemigas.Push(DestructoresG2Temporal);
 		}
-		for(int i = 0; i < FMath::RandRange(1, 3); i++){
+		for(int i = 0; i < 3; i++){
 
 			FVector PosicionActual = FVector(LocNavesCaza.X, LocNavesCaza.Y, LocNavesCaza.Z);
 			ACazaG1* CazasG1Temporal = World->SpawnActor<ACazaG1>(LocNavesCaza, RotacionNave);
@@ -215,13 +215,34 @@ void AGalaga_USFX_L01GameMode::BeginPlay()
 			TANavesEnemigas.Push(CazasG1Temporal);
 		}
 		LocNavesCaza.Y = 750.0f;
-		for (int i = 0; i < FMath::RandRange(1, 3); i++) {
+		for (int i = 0; i < 3; i++) {
 
 			FVector PosicionActual = FVector(LocNavesCaza.X, LocNavesCaza.Y, LocNavesCaza.Z);
 			ACazaG2* CazasG2Temporal = World->SpawnActor<ACazaG2>(LocNavesCaza, RotacionNave);
 			LocNavesCaza.Y = LocNavesCaza.Y - 600.0f;
 
 			TANavesEnemigas.Push(CazasG2Temporal);
+		}
+		for (int i = 0; i < 8; i++) {
+
+			if (i < 4) {
+				FVector PosicionActual = FVector(LocNavesTransporte.X, LocNavesTransporte.X, LocNavesTransporte.Z);
+				ATransporteG1* TransporteG1Temporal = World->SpawnActor<ATransporteG1>(LocNavesTransporte, RotacionNave);
+				LocNavesTransporte.X = LocNavesTransporte.X + 100.0f;
+
+				TANavesEnemigas.Push(TransporteG1Temporal);
+			}
+			else {
+				if (i == 4) {
+					LocNavesTransporte.X = 300.0f;
+				}
+				LocNavesTransporte.Y = 750.0f;
+				FVector PosicionActual = FVector(LocNavesTransporte.X, LocNavesTransporte.Y, LocNavesTransporte.Z);
+				ATransporteG2* TransporteG2Temporal = World->SpawnActor<ATransporteG2>(LocNavesTransporte, RotacionNave);
+				LocNavesTransporte.X = LocNavesTransporte.X + 100.0f;
+
+				TANavesEnemigas.Push(TransporteG2Temporal);
+			}
 		}
 		/*Caza01 = World->SpawnActor<ACazaG1>(LocCaza01, rotacionNave);
 		Caza02 = World->SpawnActor<ACazaG2>(LocCaza02, rotacionNave);

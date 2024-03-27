@@ -4,8 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "NaveEnemiga.h"
+//#include "Movimiento1.h"
 #include "NaveEnemigaNodriza.generated.h"
-
 /**
  * 
  */
@@ -30,6 +30,10 @@ public:
 	FORCEINLINE void SetCantidadMiniNaves(int _CantidadMiniNaves) { CantidadMiniNaves = _CantidadMiniNaves; }
 
 protected:
+
+	/*UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Movimiento")
+	UMovimiento1* ComponenteMovimiento;*/
+
 	float LimiteDerecho;
 	float LimiteIzquierdo;
 	virtual void Mover(float DeltaTime);

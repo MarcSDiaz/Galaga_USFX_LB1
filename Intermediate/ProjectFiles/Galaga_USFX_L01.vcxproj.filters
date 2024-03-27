@@ -100,6 +100,24 @@
     <ClInclude Include="..\..\Source\Galaga_USFX_L01\Galaga_USFX_L01Projectile.h">
       <Filter>Source\Galaga_USFX_L01</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\Galaga_USFX_L01\Movimiento1.cpp">
+      <Filter>Source\Galaga_USFX_L01</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Galaga_USFX_L01\Movimiento1.h">
+      <Filter>Source\Galaga_USFX_L01</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Galaga_USFX_L01\Movimiento2.cpp">
+      <Filter>Source\Galaga_USFX_L01</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Galaga_USFX_L01\Movimiento2.h">
+      <Filter>Source\Galaga_USFX_L01</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Galaga_USFX_L01\Movimiento3.cpp">
+      <Filter>Source\Galaga_USFX_L01</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Galaga_USFX_L01\Movimiento3.h">
+      <Filter>Source\Galaga_USFX_L01</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\Galaga_USFX_L01\NaveEnemiga.cpp">
       <Filter>Source\Galaga_USFX_L01</Filter>
     </ClCompile>

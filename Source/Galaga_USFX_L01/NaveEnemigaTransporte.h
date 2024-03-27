@@ -28,4 +28,5 @@ public:
 protected:
 
 	virtual void Disparar();
+	virtual void Mover(float DeltaTime);
 };

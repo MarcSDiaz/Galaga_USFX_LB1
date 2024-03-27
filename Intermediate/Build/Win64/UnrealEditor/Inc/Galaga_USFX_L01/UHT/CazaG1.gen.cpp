@@ -79,9 +79,9 @@ void EmptyLinkFunctionForGeneratedCodeCazaG1() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_marco_source_repos_NewRepo_Source_Galaga_USFX_L01_CazaG1_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ACazaG1, ACazaG1::StaticClass, TEXT("ACazaG1"), &Z_Registration_Info_UClass_ACazaG1, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACazaG1), 3341906679U) },
+		{ Z_Construct_UClass_ACazaG1, ACazaG1::StaticClass, TEXT("ACazaG1"), &Z_Registration_Info_UClass_ACazaG1, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACazaG1), 3470983296U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_marco_source_repos_NewRepo_Source_Galaga_USFX_L01_CazaG1_h_2080187738(TEXT("/Script/Galaga_USFX_L01"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_marco_source_repos_NewRepo_Source_Galaga_USFX_L01_CazaG1_h_2576699765(TEXT("/Script/Galaga_USFX_L01"),
 		Z_CompiledInDeferFile_FID_Users_marco_source_repos_NewRepo_Source_Galaga_USFX_L01_CazaG1_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_marco_source_repos_NewRepo_Source_Galaga_USFX_L01_CazaG1_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

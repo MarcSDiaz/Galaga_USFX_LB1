@@ -18,9 +18,12 @@ public:
 
 	ADestructorG1();
 	virtual void Tick(float DeltaTime) override;
+	float Velocidad;
 
 protected:
 
+	float LimiteMaximo;
+	float Inicio;
 	virtual void BeginPlay() override;
 	virtual void Mover(float DeltaTime);
 };

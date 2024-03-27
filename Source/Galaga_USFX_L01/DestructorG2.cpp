@@ -5,6 +5,9 @@
 
 ADestructorG2::ADestructorG2()
 {
+	Velocidad = -450.0f;
+	LimiteMaximo = -900.0f;
+	Inicio = 200.0f;
 
 }
 
@@ -17,12 +20,16 @@ void ADestructorG2::Tick(float DeltaTime)
 void ADestructorG2::BeginPlay()
 {
 	Super::BeginPlay();
+
 }
 
 void ADestructorG2::Mover(float DeltaTime)
 {
 	FVector PosicionActual = GetActorLocation();
-	float Velocidad = -1000.0f;
 	FVector NuevaPosicion = PosicionActual + FVector(Velocidad * DeltaTime, 0.0f, 0.0f);
+	if (NuevaPosicion.X <= LimiteMaximo)
+	{
+		NuevaPosicion.X = Inicio;
+	}
 	SetActorLocation(NuevaPosicion);
 }
